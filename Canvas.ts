@@ -48,10 +48,9 @@ export class Canvas {
 	/**
 	 * Append element to some other element
 	 */
-	appendTo(where: HTMLElement, tabIndex = 0): this {
-		this._canvas.tabIndex = tabIndex;
-		this._canvas.addEventListener("keydown", (e) => this._onKey(e));
-		this._canvas.addEventListener("mousedown", (e) => this._onMouse(e));
+	appendTo(where: HTMLElement, handlerElement=document.body): this {
+		handlerElement.addEventListener("keydown", (e) => this._onKey(e));
+		handlerElement.addEventListener("mousedown", (e) => this._onMouse(e));
 
 		where.appendChild(this._canvas);
 		return this;
@@ -143,14 +142,12 @@ export class Canvas {
 
 	private _onKey(e: KeyboardEvent) {
 		this.keys.emit(e.code);
-		e.stopPropagation();
 	}
 
 	private _onMouse(e: MouseEvent) {
 		const x = Math.floor(e.clientX / this.tileWidth);
 		const y = Math.floor(e.clientY / this.tileHeight);
 		this.mouse.emit(new Coordinates(x, y));
-		e.stopPropagation();
 	}
 
 	/**
