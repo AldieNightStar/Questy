@@ -118,6 +118,13 @@ export class Canvas {
 	}
 
 	/**
+	 * Get Delta time
+	 */
+	delta(): number {
+		return this._timeDelta.delta();
+	}
+
+	/**
 	 * Start the game
 	 */
 	start(): this {
