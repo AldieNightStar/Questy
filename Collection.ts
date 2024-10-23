@@ -4,7 +4,7 @@ import { Canvas } from "./Questy"
  * Entity interface
  */
 export interface Entity {
-	draw(c: Canvas, delta: number): void
+	draw(c: Canvas): void
 	isAlive(): boolean
 }
 
@@ -19,7 +19,8 @@ export function isEntity(o: any): o is Entity {
 /**
  * Collection of entities
  */
-export class Collection {
+export class Collection implements Entity {
+	
 	private _entities: Entity[] = [];
 
 	/**
@@ -32,12 +33,12 @@ export class Collection {
 	/**
 	 * Draw entities and process in the same time
 	 */
-	draw(c: Canvas, delta: number): void {
+	draw(c: Canvas): void {
 		this._entities = this._entities.filter(e => {
 			// Do the draw
-			e.draw(c, delta)
+			e.draw(c)
 
-			// Test that it is not dead
+			// Test that it still alive
 			return e.isAlive();
 		});
 	}
@@ -68,6 +69,13 @@ export class Collection {
 	 */
 	size(): number {
 		return this._entities.length;
+	}
+
+	/**
+	 * Always alive
+	 */
+	isAlive(): boolean {
+		return true;
 	}
 
 
