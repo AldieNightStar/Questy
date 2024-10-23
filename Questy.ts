@@ -155,12 +155,15 @@ export class Canvas {
 		e.stopPropagation();
 	}
 
+	/**
+	 * Resize canvas to Full size
+	 */
 	resizeToFull(): this {
 		this._canvas.style.position = "absolute";
 		this._canvas.style.left = "0px";
 		this._canvas.style.top = "0px";
-		this._canvas.style.width = window.innerWidth + "px";
-		this._canvas.style.height = window.innerHeight + "px";
+		this._canvas.width = window.innerWidth;
+		this._canvas.height = window.innerHeight;
 		return this;
 	}
 
