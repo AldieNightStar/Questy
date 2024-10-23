@@ -139,7 +139,7 @@ export class Canvas {
 	/**
 	 * Clear the canvas. Doing that under the hood
 	 */
-	private clear() {
+	clear() {
 		this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
 	}
 
