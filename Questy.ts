@@ -1,3 +1,5 @@
+export { Collection, Entity } from "./Collection";
+
 export class Canvas {
 	constructor(
 		private _canvas: HTMLCanvasElement,
@@ -160,6 +162,12 @@ export interface Game {
 	key(code: string): void
 	mouse(x: number, y: number): void
 	draw(c: Canvas, delta: number): void
+}
+
+export function isGame(o: any): o is Game {
+	return o.key instanceof Function
+		&& o.mouse instanceof Function
+		&& o.draw instanceof Function;
 }
 
 export class TimeDelta {
