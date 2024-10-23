@@ -38,8 +38,8 @@ export class Canvas {
 	/**
 	 * Append element to some other element
 	 */
-	appendTo(where: HTMLElement): this {
-		this._canvas.tabIndex = 0;
+	appendTo(where: HTMLElement, tabIndex = 0): this {
+		this._canvas.tabIndex = tabIndex;
 		this._canvas.addEventListener("keydown", (e) => this._onKey(e));
 		this._canvas.addEventListener("mousedown", (e) => this._onMouse(e));
 
