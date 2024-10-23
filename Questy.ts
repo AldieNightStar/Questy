@@ -20,7 +20,7 @@ export class Canvas {
 	 */
 	static create(w: number, h: number, g: Game) {
 		const c = document.createElement("canvas");
-		const ctx = c.getContext("2d");
+		const ctx = c.getContext("2d");``
 		c.width = w;
 		c.height = h;
 		c.style.imageRendering = "pixelated";
@@ -32,7 +32,7 @@ export class Canvas {
 	 * Create Canvas for full screen
 	 */
 	static createFull(g: Game) {
-		return this.create(window.innerWidth, window.innerHeight, g)._absolutePos();
+		return this.create(window.innerWidth, window.innerHeight, g).resizeToFull();
 	}
 
 	/**
@@ -148,10 +148,12 @@ export class Canvas {
 		e.stopPropagation();
 	}
 
-	private _absolutePos(): this {
+	resizeToFull(): this {
 		this._canvas.style.position = "absolute";
 		this._canvas.style.left = "0px";
 		this._canvas.style.top = "0px";
+		this._canvas.style.width = window.innerWidth + "px";
+		this._canvas.style.height = window.innerHeight + "px";
 		return this;
 	}
 
