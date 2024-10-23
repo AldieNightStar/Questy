@@ -16,7 +16,7 @@ export class Canvas {
 	/**
 	 * Create Canvas
 	 */
-	static createPx(w: number, h: number, g: Game) {
+	static create(w: number, h: number, g: Game) {
 		const c = document.createElement("canvas");
 		const ctx = c.getContext("2d");
 		c.width = w;
@@ -30,7 +30,7 @@ export class Canvas {
 	 * Create Canvas for full screen
 	 */
 	static createFull(g: Game) {
-		return this.createPx(window.innerWidth, window.innerHeight, g)._absolutePos();
+		return this.create(window.innerWidth, window.innerHeight, g)._absolutePos();
 	}
 
 	/**
